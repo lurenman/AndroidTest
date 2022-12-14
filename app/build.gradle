@@ -1,0 +1,74 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android-extensions'
+}
+
+android {
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.example.androidtest"
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.2"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2"
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    // JUnit4：本地单元测试
+    testImplementation "junit:junit:4.13.2"
+    testImplementation 'androidx.test:core:1.4.0'
+    // AndroidJUnitRunner and JUnit Rules：插桩单元测试
+    testImplementation 'androidx.test:runner:1.4.0'
+    testImplementation 'androidx.test:rules:1.4.0'
+    // runner 和 rules 的扩展包：@RunWith(AndroidJUnit4.class) 在此扩展包的 runners 下
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    // Robolectric：本地单元测试依赖 Android 框架
+    testImplementation "org.robolectric:robolectric:4.9"
+    // Mockito：本地单元测试模拟框架 (可选，用于模拟一些依赖对象，以达到隔离依赖的效果）
+    testImplementation 'org.mockito:mockito-core:3.3.3'
+    // PowerMock：Mockito的一种扩展（以实现完成对private/static/final方法的Mock）
+    testImplementation 'org.powermock:powermock-api-mockito2:2.0.9'
+    testImplementation 'org.powermock:powermock-module-junit4:2.0.9'
+    testImplementation "org.powermock:powermock-module-junit4-rule:2.0.9"
+    testImplementation "org.powermock:powermock-classloading-xstream:2.0.9"
+
+    implementation('io.github.lurenman:fraudmetrix:1.0') {
+        //exclude group: "io.github.lurenman", module: "packagelist"
+       exclude group: "io.github.lurenman", module: "readphone"
+       //exclude group: "io.github.lurenman", module: "sdkaar"
+    }
+}

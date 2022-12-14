@@ -1,0 +1,26 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+       // maven { url '/Users/td/.m2/repository' }
+        // release 中央仓库
+       // maven { url 'https://s01.oss.sonatype.org/content/repositories/releases'}
+        // 暂存库，用于验证
+       // maven { url "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2"}
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+       // maven { url '/Users/td/.m2/repository' }
+        // release 中央仓库
+       // maven { url 'https://s01.oss.sonatype.org/content/repositories/releases'}
+        // 暂存库，用于验证
+        //maven { url "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2"}
+    }
+}
+rootProject.name = "AndroidTest"
+include ':app'
